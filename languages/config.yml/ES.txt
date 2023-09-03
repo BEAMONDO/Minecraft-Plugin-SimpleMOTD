@@ -1,0 +1,34 @@
+# ################################################################################## #
+# +--------------------------------------------------------------------------------+ #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# |             __          __        ___                __  _____  __             | #
+# |            /__` | |\/| |__) |    |_            |\/| /  \   |   |  \            | #
+# |            .__/ | |  | |    |___ |___          |  | \__/   |   |__/            | #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# |      Youtube:    www.youtube.com/@davigamer1614                                | #
+# |      Github:     https://github.com/BEAMONDO/Minecraft-Plugin-SimpleMOTD       | #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# +--------------------------------------------------------------------------------+ #
+# ################################################################################## #
+
+
+#   update-message: activar o desactivar el mensaje de actualizacion disponible al entrar al servidor
+#   no-argument-message: activar o desactivar el mensaje del comando "/sm" en el caso de no tener ningun argumento
+#   no-perm-message: activar o desactivar el mensaje para cuando usas un comando y no tienes permiso
+
+#   maintenance-mode: activar o desactivar el modo mantenimiento
+#   maintenance-mode-kick: echa a un jugador que intente entrar cuando esta el modo mantenimiento activado
+
+
+Config:
+  update-message: true
+  no-argument-message: true
+  no-perm-message: true
+  maintenance-mode: false
+  maintenance-mode-kick: true

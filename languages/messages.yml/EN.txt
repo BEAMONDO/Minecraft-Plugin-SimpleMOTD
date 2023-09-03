@@ -1,0 +1,21 @@
+Messages:
+  motd:
+    line1: "                     §e§lSimpleMOTD"
+    line2: "            §aJoin Now §7| §cSIMPLE MOTD"
+  maintenance: 
+    line1: "§c§lMaintenance"
+    line2: "§6Server is under maintenance"
+    kick-message: "§4§lMaintenance mode is currently on"
+    kick-bypass: "&4Server is under maintenance, &6may not work correctly"
+  help:
+  - '&b<-----------------&aCOMMANDS&b----------------->'
+  - '&e/sm help &7Show this message'
+  - '&e/sm version &7Show plugin version'
+  - '&e/sm reload &7Reload plugin'
+  - '&e/sm plugin &7Show plugin download link'
+  reload: '%plugin% &aThe plugin has been reloaded'
+  version: '%plugin% &aPlugin version: &b%version%'
+  command-no-argument: '%plugin% &fUse &e/sm help &fto see the command list'
+  no-perm: '%plugin% &cYou don`t have permission to use that command'
+  console-error: 'You can`t use that command in console'
+  update-checker: '%plugin% &bThere is a new version &e(&f%latestversion%&e)&b. Download it here: &7https://www.spigotmc.org/resources/112452/'

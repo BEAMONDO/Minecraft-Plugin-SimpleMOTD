@@ -1,0 +1,21 @@
+Messages:
+  motd:
+    line1: "                     §e§lSimpleMOTD"
+    line2: "            §aJoin Now §7| §cSIMPLE MOTD"
+  maintenance: 
+    line1: "§c§lMantenimiento"
+    line2: "§6El servidor esta en mantenimiento"
+    kick-message: "§4§lEl servidor esta en mantenimiento"
+    kick-bypass: "&4El servidor esta en mantenimiento, &6puede que algo no funcione correctamente"
+  help:
+  - '&b<-----------------&aCOMANDOS&b----------------->'
+  - '&e/sm help &7Muestra este mensaje'
+  - '&e/sm version &7Version del plugin'
+  - '&e/sm reload &7Recargar el plugin'
+  - '&e/sm plugin &7Muestra el link de descarga del plugin'
+  reload: '%plugin% &aEl plugin ha sido recargado'
+  version: '%plugin% &aVersion &b%version%'
+  command-no-argument: '%plugin% &fUsa &e/sm help &fpara ver la lista de comandos'
+  no-perm: '%plugin% &cNo tienes permiso para ejecutar ese comando'
+  console-error:  No puedes ejecutar ese comando desde la consola
+  update-checker: '%plugin% &bHay una nueva version &e(&f%latestversion%&e)&b. Descargala aqui: &7https://www.spigotmc.org/resources/112452/'
