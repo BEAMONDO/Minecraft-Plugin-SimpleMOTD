@@ -1,0 +1,24 @@
+main: davigamer161.simplemotd.SimpleMOTD
+version: 1.0.1
+name: SimpleMOTD
+
+commands:
+  simplemotd:
+    description: Comando principal
+    aliases: [smotd, sm]
+permissions:
+  simplemotd.*:
+    default: op
+    description: Todos los permisos
+  simplemotd.bypass:
+    description: Entrar al servidor en modo mantenimiento
+  simplemotd.reload:
+    description: Sirve para recargar el plugin
+  simplemotd.help:
+    description: Sirve para ver lista de comandos
+  simplemotd.version:
+    description: Sirve para ver la version del plugin
+  simplemotd.plugin:
+    description: Sirve para ver el link de descarga del plugin
+  simplemotd.updatechecker:
+    description: Sirve para comprobar si hay una nueva version del plugin

@@ -1,0 +1,32 @@
+# ################################################################################## #
+# +--------------------------------------------------------------------------------+ #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# |             __          __        ___                __  _____  __             | #
+# |            /__` | |\/| |__) |    |_            |\/| /  \   |   |  \            | #
+# |            .__/ | |  | |    |___ |___          |  | \__/   |   |__/            | #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# |      Youtube:    www.youtube.com/@davigamer1614                                | #
+# |      Github:     https://github.com/BEAMONDO/Minecraft-Plugin-SimpleMOTD       | #
+# |                                                                                | #
+# |                                                                                | #
+# |                                                                                | #
+# +--------------------------------------------------------------------------------+ #
+# ################################################################################## #
+
+
+#   update-message: enable or disable the update message when enter in server
+#   no-argument-message: enable or disable the command message "/sm" if it not have any argument
+#   no-perm-message: enable or disable message when use a command and don`t have permission
+#   maintenance-mode: enable or disable maintenance mode
+#   maintenance-mode-kick: kick player who try join the server when it is in maintenance mode
+
+Config:
+  update-message: true
+  no-argument-message: true
+  no-perm-message: true
+  maintenance-mode: false
+  maintenance-mode-kick: true
