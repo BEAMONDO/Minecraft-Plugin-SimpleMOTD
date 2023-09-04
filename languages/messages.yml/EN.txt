@@ -3,10 +3,13 @@ Messages:
     line1: "                     §e§lSimpleMOTD"
     line2: "            §aJoin Now §7| §cSIMPLE MOTD"
   maintenance: 
-    line1: "§c§lMaintenance"
-    line2: "§6Server is under maintenance"
+    line1: "                   §c§lMaintenance"
+    line2: "           §6Server is under maintenance"
     kick-message: "§4§lMaintenance mode is currently on"
     kick-bypass: "&4Server is under maintenance, &6may not work correctly"
+  icon-error:
+    invalid-image: 'All of your server icons must be 64x64 and end in .png! Those who do not comply will not be used!'
+    retry: 'The icons directory is missing! Trying to create one now...'
   help:
   - '&b<-----------------&aCOMMANDS&b----------------->'
   - '&e/sm help &7Show this message'

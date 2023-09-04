@@ -1,5 +1,6 @@
 package davigamer161.simplemotd;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -11,11 +12,19 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+
+import javax.imageio.ImageIO;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,7 +33,7 @@ import davigamer161.simplemotd.comandos.ComandoPrincipal;
 import davigamer161.simplemotd.utils.MOTD;
 import davigamer161.simplemotd.utils.UpdateChecker;
 
-public class SimpleMOTD extends JavaPlugin{
+public class SimpleMOTD extends JavaPlugin implements Listener{
 	
 	private FileConfiguration messages = null;
     private File messagesFile = null;
@@ -54,6 +63,11 @@ public class SimpleMOTD extends JavaPlugin{
       registrarMensajes();
       checkearMesages();
       comprobarActualizaciones();
+      File newFolder = new File(this.getDataFolder() + File.separator + "ServerIcons");
+      if (!newFolder.exists()) {
+         newFolder.mkdir();
+      }
+      this.getServer().getPluginManager().registerEvents(this, this);
     }
     //------------------------------Hasta aqui-----------------------------//
 	
@@ -87,7 +101,7 @@ public class SimpleMOTD extends JavaPlugin{
   //------------------------------Hasta aqui-----------------------------//
     
     
-    
+
   //--------------------------Para crear config.yml--------------------------------------//
     //------------------------------Desde aqui-----------------------------//
     public void registrarConfig(){
@@ -169,9 +183,9 @@ public class SimpleMOTD extends JavaPlugin{
   	          latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
   	          if (latestversion.length() <= 7) {
   	        	  if(!version.equals(latestversion)){
-  	        		  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.AQUA+"There is a new version available. "+ChatColor.YELLOW+
+  	        		  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.AQUA+" There is a new version available. "+ChatColor.YELLOW+
   	        				  "("+ChatColor.GRAY+latestversion+ChatColor.YELLOW+")");
-  	        		  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.AQUA+"You can download it at: "+ChatColor.WHITE+"https://www.spigotmc.org/resources/112452/");  
+  	        		  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.AQUA+" You can download it at: "+ChatColor.WHITE+"https://www.spigotmc.org/resources/112452/");  
   	        	  }      	  
   	          }
   	      } catch (Exception ex) {
@@ -185,4 +199,63 @@ public class SimpleMOTD extends JavaPlugin{
       	return this.latestversion;	
       }
       //------------------------------Hasta aqui-----------------------------//
+      
+      
+      
+    //------------------------------Evento cambiar icono-----------------------------//
+      //------------------------------Desde aqui-----------------------------//
+     @EventHandler
+     public void change(ServerListPingEvent evento) {
+        try {
+           if (this.chooseIcon() != null) {
+              evento.setServerIcon(Bukkit.loadServerIcon(this.chooseIcon()));
+           }
+        } catch (Exception var3) {
+            var3.printStackTrace();
+        }
+     }
+
+     public File chooseIcon(){
+		FileConfiguration messages = this.getMessages();
+		File carpeta = new File(this.getDataFolder() + File.separator + "ServerIcons");
+        File[] listaDeArchivos = carpeta.listFiles();
+        ArrayList<File> ArchivosRandom = new ArrayList();
+        int numeroDeArchivos;
+			if(listaDeArchivos != null){
+				File[] cantidad = listaDeArchivos;
+				int variable = listaDeArchivos.length;
+				for(numeroDeArchivos = 0; numeroDeArchivos < variable; ++numeroDeArchivos){
+					File archivo = cantidad[numeroDeArchivos];
+					if (archivo.getName().contains(".png")) {
+						try{
+							BufferedImage imagen = ImageIO.read(new File(carpeta + File.separator + archivo.getName()));
+							int ancho = imagen.getWidth();
+							int alto = imagen.getHeight();
+							if(ancho == 64 && alto == 64){
+								ArchivosRandom.add(archivo);
+							}else if (!archivo.isHidden()){
+								String mensaje = messages.getString("Messages.icon-error.invalid-image");
+								Bukkit.getServer().getLogger().log(Level.WARNING, mensaje);
+							}
+						}catch (IOException error2){
+							error2.printStackTrace();
+						}
+					}else if(!archivo.isHidden()){
+						String mensaje = messages.getString("Messages.icon-error.invalid-image");
+						Bukkit.getServer().getLogger().log(Level.WARNING, mensaje);
+					}
+				}
+			}else {
+        String mensaje = messages.getString("Messages.icon-error.retry");
+        Bukkit.getServer().getLogger().log(Level.SEVERE, mensaje);
+        carpeta.mkdir();
+     }if (ArchivosRandom.isEmpty()){
+            	return null;
+        	}else{
+				Random random = new Random();
+				numeroDeArchivos = random.nextInt(ArchivosRandom.size());
+				return (File)ArchivosRandom.get(numeroDeArchivos);
+        	}
+	}
+     //------------------------------Hasta aqui-----------------------------//
 }

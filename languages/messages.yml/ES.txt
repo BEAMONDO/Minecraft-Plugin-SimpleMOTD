@@ -1,12 +1,15 @@
 Messages:
   motd:
     line1: "                     §e§lSimpleMOTD"
-    line2: "            §aJoin Now §7| §cSIMPLE MOTD"
+    line2: "           §aEntra Ahora §7| §cSIMPLE MOTD"
   maintenance: 
-    line1: "§c§lMantenimiento"
-    line2: "§6El servidor esta en mantenimiento"
+    line1: "                 §c§lMantenimiento"
+    line2: "         §6El servidor esta en mantenimiento"
     kick-message: "§4§lEl servidor esta en mantenimiento"
     kick-bypass: "&4El servidor esta en mantenimiento, &6puede que algo no funcione correctamente"
+  icon-error:
+    invalid-image: 'Todos los iconos del servidor deben ser de 64x64 y terminar en .png! Los que no lo cumplan no seran usados!'
+    retry: 'La carpeta ServerIcon no existe! Intentando crearla ahora...'
   help:
   - '&b<-----------------&aCOMANDOS&b----------------->'
   - '&e/sm help &7Muestra este mensaje'
