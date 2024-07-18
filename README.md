@@ -1,5 +1,5 @@
 # SimpleMOTD
- Plugin para minecraft 1.8 - 1.20.1
+ Plugin para minecraft 1.8 - 1.21
 
 Plugin para cambiar el MOTD de tu servidor
 
