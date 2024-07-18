@@ -21,12 +21,17 @@
 #   update-message: enable or disable the update message when enter in server
 #   no-argument-message: enable or disable the command message "/sm" if it not have any argument
 #   no-perm-message: enable or disable message when use a command and don`t have permission
+#   show-icon: enable or disable icon
+#   show-motd: enable or disable motd
 #   maintenance-mode: enable or disable maintenance mode
 #   maintenance-mode-kick: kick player who try join the server when it is in maintenance mode
+
 
 Config:
   update-message: true
   no-argument-message: true
   no-perm-message: true
+  show-icon: true
+  show-motd: true
   maintenance-mode: false
   maintenance-mode-kick: true

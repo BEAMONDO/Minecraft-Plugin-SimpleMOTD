@@ -21,7 +21,8 @@
 #   update-message: activar o desactivar el mensaje de actualizacion disponible al entrar al servidor
 #   no-argument-message: activar o desactivar el mensaje del comando "/sm" en el caso de no tener ningun argumento
 #   no-perm-message: activar o desactivar el mensaje para cuando usas un comando y no tienes permiso
-
+#   show-icon: activar o desactivar icono
+#   show-motd: activar o desactivar motd
 #   maintenance-mode: activar o desactivar el modo mantenimiento
 #   maintenance-mode-kick: echa a un jugador que intente entrar cuando esta el modo mantenimiento activado
 
@@ -30,5 +31,7 @@ Config:
   update-message: true
   no-argument-message: true
   no-perm-message: true
+  show-icon: true
+  show-motd: true
   maintenance-mode: false
   maintenance-mode-kick: true

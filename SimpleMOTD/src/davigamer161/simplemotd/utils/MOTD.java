@@ -17,7 +17,12 @@ public class MOTD implements Listener{
 		this.plugin = plugin;
 	}
 	@EventHandler
-    public void on(ServerListPingEvent event){
+    public void motd(ServerListPingEvent event){
+		boolean showmotd = plugin.getConfig().getBoolean("Config.show-motd");
+        if (!showmotd) {
+          // Si show-motd es false, no hacer nada
+          return;
+        }
 		FileConfiguration config = plugin.getConfig();
 		FileConfiguration messages = plugin.getMessages();
 		String motdlinea1 = messages.getString("Messages.motd.line1");
@@ -32,7 +37,7 @@ public class MOTD implements Listener{
 	    }
 	}
 	@EventHandler
-    public void on(PlayerJoinEvent event){
+    public void maintenanceMode(PlayerJoinEvent event){
 		FileConfiguration config = plugin.getConfig();
 		FileConfiguration messages = plugin.getMessages();
 		Player jugador = event.getPlayer();

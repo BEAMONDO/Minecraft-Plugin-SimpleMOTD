@@ -37,31 +37,30 @@ public class SimpleMOTD extends JavaPlugin implements Listener{
 	
 	private FileConfiguration messages = null;
     private File messagesFile = null;
-    public String rutaConfig;
-    public String rutaMessages;
+    public String rutaConfig, rutaMessages;
 	PluginDescriptionFile pdffile;
-    public String version;
-    public String latestversion;
-    public String nombre;	
+    public String version, latestversion;
+    public String nombre, author;	
 	
 	public SimpleMOTD(){
 	      this.pdffile = this.getDescription();
 	      this.version = this.pdffile.getVersion();
 	      this.nombre = ChatColor.RED+"["+ChatColor.YELLOW+this.pdffile.getName()+ChatColor.RED+"]"+ChatColor.WHITE;
+          this.author = this.getDescription().getAuthors().toString();
 	    }
 	//---------------------Para cuando se activa el plugin----------------------------------//
     //------------------------------Desde aqui-----------------------------//
     public void onEnable(){
-      Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE+"<------------------------------------>");
-	  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.WHITE+" Enabled, ("+ChatColor.GREEN+"Version: "+ChatColor.AQUA+version+ChatColor.WHITE+")");
-	  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.GOLD+" Thanks for use my plugin :)");
-	  Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.YELLOW+" Made by "+ChatColor.LIGHT_PURPLE+"davigamer161");
-      Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE+"<------------------------------------>");
       registrarComandos();
       registrarEventos();
       registrarConfig();
       registrarMensajes();
       checkearMesages();
+      Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE+"<------------------------------------>");
+      Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.WHITE+" Enabled, ("+ChatColor.GREEN+"Version: "+ChatColor.AQUA+version+ChatColor.WHITE+")");
+      Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.GOLD+" Thanks for use my plugin :)");
+      Bukkit.getConsoleSender().sendMessage(nombre+ChatColor.YELLOW+" Made by "+ChatColor.LIGHT_PURPLE+"davigamer161");
+      Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE+"<------------------------------------>");
       comprobarActualizaciones();
       File newFolder = new File(this.getDataFolder() + File.separator + "ServerIcons");
       if (!newFolder.exists()) {
@@ -160,7 +159,11 @@ public class SimpleMOTD extends JavaPlugin implements Listener{
     	  try {
           String texto = new String(Files.readAllBytes(archivo));
           if(!texto.contains("update-checker:")) {
-            getMessages().set("Messages.update-checker", "%plugin% &bThere is a new version &e(&f%latestversion%&e)&b. Download it here: &7https://www.spigotmc.org/resources/112452/");
+            getMessages().set("Messages.update-checker", "%plugin% &bThere is a new version &e(&f%latestversion%&e)&b. Download it here: &7%link%");
+            saveMessages();
+          }
+          if(!texto.contains("author:")){
+            getMessages().set("Messages.author", "%plugin% &aPlugin author: &b%author%");
             saveMessages();
           }
         } catch (IOException e) {
@@ -206,6 +209,11 @@ public class SimpleMOTD extends JavaPlugin implements Listener{
       //------------------------------Desde aqui-----------------------------//
      @EventHandler
      public void change(ServerListPingEvent evento) {
+      boolean showicon = getConfig().getBoolean("Config.show-icon");
+        if (!showicon) {
+          // Si show-icon es false, no hacer nada
+          return;
+        }
         try {
            if (this.chooseIcon() != null) {
               evento.setServerIcon(Bukkit.loadServerIcon(this.chooseIcon()));
